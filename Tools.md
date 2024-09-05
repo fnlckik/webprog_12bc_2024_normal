@@ -23,6 +23,7 @@
     - "New snippet experience" ne legyen pipálva
   - **Turn off completions:** Tools > Options > IntelliCode > General
     - "Show whole line completions" ne legyen pipálva
+  - **Color theme:** Tools > Options > Environment > General
 
 ## XAMPP
   - **phpMyAdmin (browser):** `http://localhost/phpmyadmin/`
