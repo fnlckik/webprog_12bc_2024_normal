@@ -33,4 +33,4 @@ for (const product of products) {
     }
 }
 
-console.log(`Legolcsóbb termék: ${cheapestProduct.name} (${cheapestProduct.category})`);
+// console.log(`Legolcsóbb termék: ${cheapestProduct.name} (${cheapestProduct.category})`);
