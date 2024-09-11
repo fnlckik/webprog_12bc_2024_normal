@@ -7,3 +7,7 @@ function atvalt(n) {
     }
     return parseInt(maradek);
 }
+
+function atvalt2(n) {
+    return parseInt(n.toString(2));
+}

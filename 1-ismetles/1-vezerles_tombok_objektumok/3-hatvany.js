@@ -13,3 +13,8 @@ function hatvany(a, k) {
     
     return hatvany;
 }
+
+// Math "osztály" => Math objektum
+function hatvany2(a, k) {
+    return Math.pow(a, k);
+}

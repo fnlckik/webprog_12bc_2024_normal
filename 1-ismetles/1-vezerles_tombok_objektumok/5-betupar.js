@@ -16,3 +16,7 @@ function hasonlit(a, b) {
         return 0;
     }
 }
+
+function hasonlit2(a, b) {
+    return a.localeCompare(b);
+}
