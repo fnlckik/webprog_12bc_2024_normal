@@ -1,5 +1,3 @@
-// Hibás a visszatérési érték típusa!
-// Hogyan javítsuk?
 function atvalt(n) {
     let maradek = "";
     while (n != 0) {
@@ -7,5 +5,5 @@ function atvalt(n) {
         n = parseInt(n / 2);
         maradek = m + maradek;
     }
-    return maradek;
+    return parseInt(maradek);
 }
