@@ -5,21 +5,25 @@ function randint(a, b) {
 
 const n = randint(1, 100);
 
-// Csalás - fejlesztés miatt
-console.log("Kitalálandó:", n);
+// Csalás - fejlesztés miatt magunknak
+// console.log("Kitalálandó:", n);
 
 function handleGuess() {
     const input = document.querySelector("input");
     const guess = input.value;
+
+    const ol = document.querySelector("ol");
+    const li = document.createElement("li");
     if (guess > n) {
-        console.log(`A szám kisebb, mint ${guess}`);
+        li.innerText = `A szám kisebb, mint ${guess}!`;
     } else if (guess < n) {
-        console.log(`A szám nagyobb, mint ${guess}`);
+        li.innerText = `A szám nagyobb, mint ${guess}!`;
     } else {
-        console.log("Kitaláltad!");
+        li.innerText = "Kitaláltad!";
         button.removeEventListener("click", handleGuess);
         input.disabled = true;
     }
+    ol.appendChild(li);
 }
 const button = document.querySelector("button");
 button.addEventListener("click", handleGuess);
