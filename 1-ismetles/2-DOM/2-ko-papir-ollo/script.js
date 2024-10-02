@@ -22,6 +22,20 @@ function randomItem() {
     return items[r];
 }
 
+function decideWinner(human, computer) {
+    if (human === computer) {
+        return "Döntetlen!";
+    } else if (human === "ko" && computer === "ollo") {
+        return "Játékos nyert!";
+    } else if (human === "ollo" && computer === "papir") {
+        return "Játékos nyert!";
+    } else if (human === "papir" && computer === "ko") {
+        return "Játékos nyert!";
+    } else {
+        return "Számítógép nyert!";
+    }
+}
+
 // Ugyanazon eseménykezelő több objektumhoz is
 // hozzá van rendelve. A this objektum mondja meg, hogy
 // ki váltotta ki az eseményt!
@@ -43,6 +57,8 @@ function handleChoose() {
     const p = document.querySelector("#eredmeny");
     body.insertBefore(img, p); // szulo.insertBefore(gyerek, testver)
 
+    const winner = decideWinner(this.alt, computer);
+    p.innerText = `Eredmény: ${winner}`;
 }
 // classList => vissza adja az elem osztályainak "listáját" (DOMTokenList)
 // classList.add("active");
