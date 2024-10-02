@@ -1,6 +1,6 @@
-function greetOldUser(userName) {
+function greetOldUser(userName, greeting) {
     const p = document.createElement("p");
-    p.innerText = `Szia ${userName}!`; // "Szia FNL!"
+    p.innerText = `${greeting} ${userName}!`;
     const oldDiv = document.querySelector("#regi");
     oldDiv.appendChild(p);
 
@@ -10,19 +10,27 @@ function greetOldUser(userName) {
 
 function handleClick() {
     const input = document.querySelector("input[type=text]");
+    
+    const select = document.querySelector("select");
+    const options = select.options;
+    const greeting = options[select.selectedIndex].innerText;
+
+    // Adatok tárolása objektumban ???
+
     localStorage.setItem("user", input.value);
-    greetOldUser(input.value);
+    localStorage.setItem("greeting", greeting);
+    
+    greetOldUser(input.value, greeting);
 }
 const button = document.querySelector("button");
 button.addEventListener("click", handleClick);
 
 // Oldal betöltődésekor köszöntsük a felhasználót!
 function handleLoad() {
-    // console.log("Betöltött az oldal!");
     const user = localStorage.getItem("user");
-    // user !== null
+    const greeting = localStorage.getItem("greeting");
     if (user) {
-        greetOldUser(user);
+        greetOldUser(user, greeting);
     }
 }
 window.addEventListener("load", handleLoad);
