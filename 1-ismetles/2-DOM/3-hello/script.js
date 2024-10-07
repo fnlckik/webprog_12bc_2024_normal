@@ -1,6 +1,6 @@
-function greetOldUser(userName, greeting) {
+function greetOldUser(user) {
     const p = document.createElement("p");
-    p.innerText = `${greeting} ${userName}!`;
+    p.innerText = `${user.greeting} ${user.name}!`;
     const oldDiv = document.querySelector("#regi");
     oldDiv.appendChild(p);
 
@@ -9,28 +9,26 @@ function greetOldUser(userName, greeting) {
 }
 
 function handleClick() {
-    const input = document.querySelector("input[type=text]");
+    const name = document.querySelector("input[type=text]").value;
     
     const select = document.querySelector("select");
     const options = select.options;
     const greeting = options[select.selectedIndex].innerText;
-
-    // Adatok tárolása objektumban ???
-
-    localStorage.setItem("user", input.value);
-    localStorage.setItem("greeting", greeting);
     
-    greetOldUser(input.value, greeting);
+    const user = { name, greeting };
+
+    localStorage.setItem("user", JSON.stringify(user));
+    
+    greetOldUser(user);
 }
 const button = document.querySelector("button");
 button.addEventListener("click", handleClick);
 
 // Oldal betöltődésekor köszöntsük a felhasználót!
 function handleLoad() {
-    const user = localStorage.getItem("user");
-    const greeting = localStorage.getItem("greeting");
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-        greetOldUser(user, greeting);
+        greetOldUser(user);
     }
 }
 window.addEventListener("load", handleLoad);
