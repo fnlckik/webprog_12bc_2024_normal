@@ -14,6 +14,25 @@ function randint(a, b) {
 
 // --------------------------------------------
 
+function generateMines() {
+    let db = 0;
+    while (db < mineCount) {
+        const sor = randint(0, n-1); // x. sor
+        const oszlop = randint(0, n-1); // y. cella
+        if (!board[sor][oszlop].isMine) {            
+            board[sor][oszlop].isMine = true;
+            for (let i = sor-1; i <= sor+1; i++) {
+                for (let j = oszlop-1; j <= oszlop+1; j++) {
+                    if (0 <= i && i < n && 0 <= j && j < n && !(i === sor && j === oszlop)) {
+                        board[i][j].value++;
+                    }
+                }
+            }
+            db++;
+        }
+    }
+}
+
 // Készítse el a kezdeti mátrixomat!
 // field = {isMine: ???, value: ???}
 function createBoard() {
@@ -28,16 +47,22 @@ function createBoard() {
         }
         board.push(row);
     }
+    generateMines();
 }
 
 // A mátrix alapján jelenítse meg a táblázatot!
+// Nem board[i, j]
 function showBoard() {
     table.innerHTML = "";
     for (let i = 0; i < n; i++) {
         const tr = document.createElement("tr");
         for (let j = 0; j < n; j++) {
             const td = document.createElement("td");
-            td.innerText = board[i][j].value; // Nem board[i, j]
+            if (board[i][j].isMine) {
+                td.innerText = "💣";
+            } else {
+                td.innerText = board[i][j].value;
+            }
             tr.appendChild(td);
         }
         table.appendChild(tr);
