@@ -1,3 +1,4 @@
+// GLOBÁLIS VÁLTOZÓK, KONSTANSOK
 const n = 12; // 12x12
 const mineCount = 10;
 let board = []; // mátrix - játék állapottér, mezőket tartalmaz
@@ -31,7 +32,16 @@ function createBoard() {
 
 // A mátrix alapján jelenítse meg a táblázatot!
 function showBoard() {
-    
+    table.innerHTML = "";
+    for (let i = 0; i < n; i++) {
+        const tr = document.createElement("tr");
+        for (let j = 0; j < n; j++) {
+            const td = document.createElement("td");
+            td.innerText = board[i][j].value; // Nem board[i, j]
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
 }
 
 function startGame() {
