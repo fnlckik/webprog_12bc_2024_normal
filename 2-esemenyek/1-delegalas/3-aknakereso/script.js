@@ -41,13 +41,21 @@ function createBoard() {
         for (let j = 0; j < n; j++) {
             const field = {
                 isMine: false,
-                value: 0
+                value: 0,
+                isRevealed: false
             };
             row.push(field);
         }
         board.push(row);
     }
     generateMines();
+}
+
+function getText(i, j) {
+    if (!board[i][j].isRevealed) return "";
+    else if (board[i][j].isMine) return "💣";
+    else if (board[i][j].value === 0) return "";
+    else return board[i][j].value;
 }
 
 // A mátrix alapján jelenítse meg a táblázatot!
@@ -58,20 +66,23 @@ function showBoard() {
         const tr = document.createElement("tr");
         for (let j = 0; j < n; j++) {
             const td = document.createElement("td");
-            if (board[i][j].isMine) {
-                td.innerText = "💣";
-            } else {
-                td.innerText = board[i][j].value;
-            }
+            td.innerText = getText(i, j);
             tr.appendChild(td);
         }
         table.appendChild(tr);
     }
 }
 
+function handleClick(e) {
+    const cell = e.target; // i. sor j. cellája
+    board[i][j].isRevealed = true;
+    showBoard();
+}
+
 function startGame() {
     createBoard();
     showBoard();
+    table.addEventListener("click", handleClick);
 }
 const button = document.querySelector("button");
 button.addEventListener("click", startGame);
