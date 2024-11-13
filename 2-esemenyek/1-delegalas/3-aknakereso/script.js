@@ -67,16 +67,49 @@ function showBoard() {
         for (let j = 0; j < n; j++) {
             const td = document.createElement("td");
             td.innerText = getText(i, j);
+            if (board[i][j].isRevealed) {
+                td.classList.add("revealed");
+            }
             tr.appendChild(td);
         }
         table.appendChild(tr);
     }
 }
 
-function handleClick(e) {
-    const cell = e.target; // i. sor j. cellája
+// Felfedi az (i, j) cella szomszédait!
+function revealNeighbours(i, j) {
+    for (let x = i-1; x <= i+1; x++) {
+        for (let y = j-1; y <= j+1; y++) {
+            if (0 <= x && x < n && 0 <= y && y < n && !board[x][y].isRevealed) {
+                reveal(x, y);
+            }
+        }
+    }
+}
+
+// Felfedi az (i, j) cellát! (Egy darabot!)
+function reveal(i, j) {
     board[i][j].isRevealed = true;
+    if (board[i][j].value === 0) {
+        revealNeighbours(i, j);
+    }
     showBoard();
+}
+
+// Felfedtük az (i, j) mezőt.
+// Ellenőrizzük, hogy véget ért-e a játék!
+function checkGameEnd(i, j) {
+    // ???
+}
+
+// JS objektumként: td.__proto__
+function handleClick(e) {
+    const td = e.target; // i. sor j. cellája <td>
+    const j = td.cellIndex; // Hanyadik cella = hanyadik oszlop?
+    const tr = td.parentNode;
+    const i = tr.rowIndex; // Hanyadik sor?
+    reveal(i, j);
+    checkGameEnd(i, j);
 }
 
 function startGame() {
