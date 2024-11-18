@@ -90,6 +90,7 @@ function revealNeighbours(i, j) {
 // Felfedi az (i, j) cellát! (Egy darabot!)
 function reveal(i, j) {
     board[i][j].isRevealed = true;
+    revealedCount++;
     if (board[i][j].value === 0) {
         revealNeighbours(i, j);
     }
@@ -99,7 +100,13 @@ function reveal(i, j) {
 // Felfedtük az (i, j) mezőt.
 // Ellenőrizzük, hogy véget ért-e a játék!
 function checkGameEnd(i, j) {
-    // ???
+    if (board[i][j].isMine) {
+        console.log("Vesztettél!");
+        table.removeEventListener("click", handleClick);
+    } else if (revealedCount + mineCount === n*n) {
+        console.log("Nyertél!");
+        table.removeEventListener("click", handleClick);
+    }
 }
 
 // JS objektumként: td.__proto__
@@ -113,6 +120,8 @@ function handleClick(e) {
 }
 
 function startGame() {
+    board = [];
+    revealedCount = 0;
     createBoard();
     showBoard();
     table.addEventListener("click", handleClick);
