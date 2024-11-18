@@ -42,7 +42,8 @@ function createBoard() {
             const field = {
                 isMine: false,
                 value: 0,
-                isRevealed: false
+                isRevealed: false,
+                isFlagged: false
             };
             row.push(field);
         }
@@ -52,7 +53,8 @@ function createBoard() {
 }
 
 function getText(i, j) {
-    if (!board[i][j].isRevealed) return "";
+    if (board[i][j].isFlagged) return "🚩";
+    else if (!board[i][j].isRevealed) return "";
     else if (board[i][j].isMine) return "💣";
     else if (board[i][j].value === 0) return "";
     else return board[i][j].value;
@@ -90,6 +92,7 @@ function revealNeighbours(i, j) {
 // Felfedi az (i, j) cellát! (Egy darabot!)
 function reveal(i, j) {
     board[i][j].isRevealed = true;
+    board[i][j].isFlagged = false;
     revealedCount++;
     if (board[i][j].value === 0) {
         revealNeighbours(i, j);
@@ -112,11 +115,30 @@ function checkGameEnd(i, j) {
 // JS objektumként: td.__proto__
 function handleClick(e) {
     const td = e.target; // i. sor j. cellája <td>
+    if (!td.matches("table td")) { return; }
     const j = td.cellIndex; // Hanyadik cella = hanyadik oszlop?
     const tr = td.parentNode;
     const i = tr.rowIndex; // Hanyadik sor?
     reveal(i, j);
     checkGameEnd(i, j);
+}
+
+/*
+if (board[i][j].isFlagged) {
+    board[i][j].isFlagged = false;
+} else {
+    board[i][j].isFlagged = true;
+}
+*/
+function handleFlag(e) {
+    e.preventDefault();
+    const td = e.target;
+    if (!td.matches("table td")) { return; }
+    const j = td.cellIndex;
+    const tr = td.parentNode;
+    const i = tr.rowIndex;
+    board[i][j].isFlagged = !board[i][j].isFlagged;
+    showBoard();
 }
 
 function startGame() {
@@ -125,6 +147,8 @@ function startGame() {
     createBoard();
     showBoard();
     table.addEventListener("click", handleClick);
+    // Jobb gombbal kattintáskor tegyünk zászlókat!
+    table.addEventListener("contextmenu", handleFlag);
 }
 const button = document.querySelector("button");
 button.addEventListener("click", startGame);
