@@ -9,10 +9,14 @@
     `nameSpaceURI`: http://www.w3.org/2000/svg
 
     Koordináta-rendszerek:
-    `clientY`: böngésző (látható részének) tetejétől távolság
-    `pageY`: oldal (totális) tetejétől távolság
-    `screenY`: képernyő (monitor) tetejétől távolság
-    `offsetY`: elem (e.target) tetejétől távolság
+
+    - `clientY`: böngésző (látható részének) tetejétől távolság
+ 
+    - `pageY`: oldal (totális) tetejétől távolság
+    
+    - `screenY`: képernyő (monitor) tetejétől távolság
+    
+    - `offsetY`: elem (e.target) tetejétől távolság
 
     <p align="center">
     <img width="300" src="./Kepek/coordinates.png">
