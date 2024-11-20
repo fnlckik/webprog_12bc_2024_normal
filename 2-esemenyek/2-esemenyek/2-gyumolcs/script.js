@@ -4,7 +4,7 @@ const table = document.querySelector("table");
 // field = {fruit: 🍎, value: 7}
 const n = 9, m = 5;
 let board = [];
-const pos = { x: null, y: null };
+const pos = { x: null, y: null }; // x: oszlop, y: sor
 let remainingSteps = 12;
 let points = 0;
 
@@ -34,6 +34,7 @@ function showBoard() {
         const tr = document.createElement("tr");
         for (const field of row) {
             const td = document.createElement("td");
+            // td.innerText = ???
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -57,7 +58,12 @@ function usePower(e) {
 }
 
 function choosePosition(e) {
-
+    const td = e.target;
+    if (!td.matches("td")) return;
+    pos.x = td.cellIndex;
+    pos.y = td.parentNode.rowIndex;
+    td.classList.add("current-position");
+    table.removeEventListener("click", choosePosition);
 }
 
 function startGame() {
