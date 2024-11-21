@@ -49,14 +49,25 @@ function move(dx, dy) {
     
 }
 
+// e.key, e.code
+// e.key => ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function handleMove(e) {
-    
+    if (e.key === "ArrowUp" && pos.y > 0) {
+        const previousTd = table.rows[pos.y].cells[pos.x];
+        previousTd.classList.remove("current-position");
+        pos.y--;
+        const currentTd = table.rows[pos.y].cells[pos.x];
+        currentTd.classList.add("current-position");
+    }
 }
 
 function usePower(e) {
 
 }
 
+// keydown, keyup
+// keydown: folyamatosan kiváltódik amíg nyomva tartjuk a billentyűt
+// keyup: egyszer váltódik ki
 function choosePosition(e) {
     const td = e.target;
     if (!td.matches("td")) return;
@@ -64,6 +75,7 @@ function choosePosition(e) {
     pos.y = td.parentNode.rowIndex;
     td.classList.add("current-position");
     table.removeEventListener("click", choosePosition);
+    window.addEventListener("keyup", handleMove);
 }
 
 function startGame() {
