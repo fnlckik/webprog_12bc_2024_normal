@@ -13,7 +13,19 @@ function randint(a, b) {
 }
 
 function createField() {
-
+    const field = {
+        fruit: "",
+        value: 0
+    };
+    r = randint(1, 100);
+    if (r <= 10) {
+        field.fruit = "🍎";
+        field.value = 7;
+    } else if (r <= 40) {
+        field.fruit = "🍇";
+        field.value = 5;
+    }
+    return field;
 }
 
 function createBoard() {
@@ -34,7 +46,7 @@ function showBoard() {
         const tr = document.createElement("tr");
         for (const field of row) {
             const td = document.createElement("td");
-            // td.innerText = ???
+            td.innerText = field.fruit;
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -42,22 +54,47 @@ function showBoard() {
 }
 
 function collectPoints(i, j) {
-
-}
-
-function move(dx, dy) {
-    
+    const field = board[i][j];
+    points += field.value;
+    field.fruit = "";
+    field.value = 0;
+    table.rows[i].cells[j].innerText = "";
+    document.querySelector("#points span").innerText = points;
 }
 
 // e.key, e.code
 // e.key => ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function handleMove(e) {
+    let correctMove = true;
     if (e.key === "ArrowUp" && pos.y > 0) {
         const previousTd = table.rows[pos.y].cells[pos.x];
         previousTd.classList.remove("current-position");
         pos.y--;
         const currentTd = table.rows[pos.y].cells[pos.x];
         currentTd.classList.add("current-position");
+    } else if (e.key === "ArrowDown" && pos.y < n-1) {
+        const previousTd = table.rows[pos.y].cells[pos.x];
+        previousTd.classList.remove("current-position");
+        pos.y++;
+        const currentTd = table.rows[pos.y].cells[pos.x];
+        currentTd.classList.add("current-position");
+    } else if (e.key === "ArrowLeft" && pos.x > 0) {
+        const previousTd = table.rows[pos.y].cells[pos.x];
+        previousTd.classList.remove("current-position");
+        pos.x--;
+        const currentTd = table.rows[pos.y].cells[pos.x];
+        currentTd.classList.add("current-position");
+    } else if (e.key === "ArrowRight" && pos.x < m-1) {
+        const previousTd = table.rows[pos.y].cells[pos.x];
+        previousTd.classList.remove("current-position");
+        pos.x++;
+        const currentTd = table.rows[pos.y].cells[pos.x];
+        currentTd.classList.add("current-position");
+    } else {
+        correctMove = false;
+    }
+    if (correctMove) {
+        collectPoints(pos.y, pos.x);
     }
 }
 
