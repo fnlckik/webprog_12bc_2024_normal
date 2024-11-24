@@ -1,6 +1,6 @@
 // GLOBÁLIS VÁLTOZÓK, KONSTANSOK
 const n = 12; // 12x12
-const mineCount = 8;
+const mineCount = 10;
 let board = []; // mátrix - játék állapottér, mezőket tartalmaz
 let revealedCount = 0;
 
@@ -35,22 +35,6 @@ function generateMines() {
             db++;
         }
     }
-    // board[0][0].isMine = true;
-    // countNeighbours(0, 0);
-    // board[4][4].isMine = true;
-    // countNeighbours(4, 4);
-    // board[4][0].isMine = true;
-    // countNeighbours(4, 0);
-    // board[0][4].isMine = true;
-    // countNeighbours(0, 4);
-    // board[0][2].isMine = true;
-    // countNeighbours(0, 2);
-    // board[2][0].isMine = true;
-    // countNeighbours(2, 0);
-    // board[4][2].isMine = true;
-    // countNeighbours(4, 2);
-    // board[2][4].isMine = true;
-    // countNeighbours(2, 4);
 }
 
 // Készítse el a kezdeti mátrixomat!
@@ -111,10 +95,11 @@ function revealNeighbours(i, j) {
 
 // Felfedi az (i, j) cellát! (Egy darabot!)
 function reveal(i, j) {
+    if (board[i][j].isRevealed) return;
     board[i][j].isRevealed = true;
     board[i][j].isFlagged = false;
     revealedCount++;
-    // console.log(revealedCount);
+    console.log(revealedCount);
     if (board[i][j].value === 0) {
         revealNeighbours(i, j);
     }
