@@ -70,34 +70,22 @@ function handleMove(e) {
     // console.log("Karakter:", e.key);
     // console.log("Billentyű kód:", e.code);
     let correctMove = true;
+    const previousTd = table.rows[pos.y].cells[pos.x];
     if (e.key === "ArrowUp" && pos.y > 0) {
-        const previousTd = table.rows[pos.y].cells[pos.x];
-        previousTd.classList.remove("current-position");
         pos.y--;
-        const currentTd = table.rows[pos.y].cells[pos.x];
-        currentTd.classList.add("current-position");
     } else if (e.key === "ArrowDown" && pos.y < n-1) {
-        const previousTd = table.rows[pos.y].cells[pos.x];
-        previousTd.classList.remove("current-position");
         pos.y++;
-        const currentTd = table.rows[pos.y].cells[pos.x];
-        currentTd.classList.add("current-position");
     } else if (e.key === "ArrowLeft" && pos.x > 0) {
-        const previousTd = table.rows[pos.y].cells[pos.x];
-        previousTd.classList.remove("current-position");
         pos.x--;
-        const currentTd = table.rows[pos.y].cells[pos.x];
-        currentTd.classList.add("current-position");
     } else if (e.key === "ArrowRight" && pos.x < m-1) {
-        const previousTd = table.rows[pos.y].cells[pos.x];
-        previousTd.classList.remove("current-position");
         pos.x++;
-        const currentTd = table.rows[pos.y].cells[pos.x];
-        currentTd.classList.add("current-position");
     } else {
         correctMove = false;
     }
     if (correctMove) {
+        const currentTd = table.rows[pos.y].cells[pos.x];
+        currentTd.classList.add("current-position");
+        previousTd.classList.remove("current-position");
         collectPoints(pos.y, pos.x);
     }
 }
