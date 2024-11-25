@@ -18,10 +18,10 @@ function createField() {
         value: 0
     };
     r = randint(1, 100);
-    if (r <= 10) {
+    if (r <= 10) { // 10%
         field.fruit = "🍎";
         field.value = 7;
-    } else if (r <= 40) {
+    } else if (10 < r && r <= 40) { // 30%
         field.fruit = "🍇";
         field.value = 5;
     }
@@ -59,12 +59,16 @@ function collectPoints(i, j) {
     field.fruit = "";
     field.value = 0;
     table.rows[i].cells[j].innerText = "";
-    document.querySelector("#points span").innerText = points;
+    const span = document.querySelector("#points span");
+    span.innerText = points;
 }
 
-// e.key, e.code
+// e.key (karakter), e.code (billentyűzet kód)
 // e.key => ArrowUp, ArrowDown, ArrowLeft, ArrowRight
 function handleMove(e) {
+    // console.clear();
+    // console.log("Karakter:", e.key);
+    // console.log("Billentyű kód:", e.code);
     let correctMove = true;
     if (e.key === "ArrowUp" && pos.y > 0) {
         const previousTd = table.rows[pos.y].cells[pos.x];
