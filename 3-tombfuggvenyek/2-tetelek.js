@@ -1,6 +1,18 @@
 const x = [2, 6, 5, 1, 6, -2, 12, -1, 12, 6, -5, 7]; // 12 elem
 console.log("Eredeti:", x);
 
+// Anonymous function
+/*
+    function (e) {
+        return e * e;
+    }
+*/
+
+// Arrow function (nyíl függvény)
+// (e) => e * e;
+
+// Egy paraméter esetén
+// e => e * e;
 function square(e) {
     return e * e;
 }
@@ -15,11 +27,14 @@ function isNegative(e) {
 // 2015 - ES6
 
 // 1. Másolás - Adjuk meg a számok négyzeteit!
-const squares = [];
+// const squares = x.map(square);
+const squares = x.map(e => e * e);
 console.log("Négyzetek:", squares);
 
 // 2. Kiválogatás - Adjuk meg a negatív elemeket!
-const negatives = [];
+// const negatives = x.filter(isNegative);
+// const evens = x.filter(e => e % 2 === 1);
+const negatives = x.filter(e => e < 0);
 console.log("Negatívak:", negatives);
 
 // 3. Megszámolás - Negatívak száma
