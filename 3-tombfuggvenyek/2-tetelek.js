@@ -64,9 +64,9 @@ console.log("Utolsó negatív (hely, érték):", lastNegativeIndex+1, lastNegati
 // ------------------------------------------------------
 function compare(a, b) {
     if (a < b) {
-        return -911;
+        return -1; // -911
     } else if (a > b) {
-        return 122;
+        return 1; // 112
     } else {
         return 0;
     }
@@ -89,25 +89,36 @@ function compare2(a, b) {
 const sorted = x.toSorted((a, b) => a - b); // !!! 2023 !!!
 console.log("Növekvő sorrend:", sorted);
 
+// Párosak előre!
+function compare3(a, b) {
+    if (a % 2 === 0) {
+        return -1; // a < b
+    } else {
+        return 1; // a > b
+    }
+}
 
 // Comparer function: (a, b)-ről képez le -, 0, + elemekre
 // -1, ha a < b
 // 0, ha a === b
 // 1, ha a > b
-const evensFirst = [];
+const evens = x.filter(e => e % 2 === 0).toSorted((a, b) => a - b);
+const odds = x.filter(e => e % 2 !== 0).toSorted((a, b) => a - b);
+// const evensFirst = evens.concat(odds);
+const evensFirst = [...evens, ...odds];
 console.log("Párosak előre sorrend:", evensFirst);
 
 
 
 // ------------------------------------------------------
 // 8. Összegzés - Mennyi az elemek összege?
-const sum = "";
+const sum = x.reduce((s, e) => s + e, 0);
 console.log("Összeg:", sum);
 
 // 9. Maximum kiválasztás
 // a) Mennyi a legnagyobb elem?
 // b) Hol van a legnagyobb?
-const maxValue = "";
+const maxValue = x.reduce((m, e) => e > m ? e : m, x[0]);
 const maxIndex = "";
 const maxIndex2 = "";
 console.log("Maximum (első, utolsó, érték):", maxIndex, maxIndex2, maxValue);
