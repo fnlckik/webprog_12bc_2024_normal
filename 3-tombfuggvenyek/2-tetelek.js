@@ -17,6 +17,7 @@ function square(e) {
     return e * e;
 }
 
+// e => e < 0;
 function isNegative(e) {
     return e < 0;
 }
@@ -118,24 +119,42 @@ console.log("Összeg:", sum);
 // 9. Maximum kiválasztás
 // a) Mennyi a legnagyobb elem?
 // b) Hol van a legnagyobb?
+// x.reverse(): megfordítja a tömböt
 const maxValue = x.reduce((m, e) => e > m ? e : m, x[0]);
-const maxIndex = "";
-const maxIndex2 = "";
-console.log("Maximum (első, utolsó, érték):", maxIndex, maxIndex2, maxValue);
+const maxIndex = x.findIndex(e => e === maxValue);
+const maxIndex2 = x.findLastIndex(e => e === maxValue);
+console.log("Maximum (első, utolsó, érték):", maxIndex+1, maxIndex2+1, maxValue);
 
 
 
 // ------------------------------------------------------
 // Kiterjesztés (indexek)
 // 10. Kiválogatás - Minden második elemet (páros indexűeket)
-const evenPositions = [];
+const evenPositions = x.filter((e, i) => i % 2 === 0);
 console.log("Páros sorszámúak:", evenPositions);
 
 // 11. Keresés - Adjuk meg az elsőt, aminek az értéke nagyobb az indexénél
-const firstBig = "";
+const firstBig = x.find((e, i) => e > i);
 console.log("Értéke nagyobb, mint az indexe:", firstBig);
 
 // 12. Írjuk ki a sorszámokat és az értékeket egymás mellé!
-for (const e of x) {
-    //console.log(`${e}`);
+console.log("Elemek sorszámokkal:");
+
+/*
+for (let i = 0; i < x.length; i++) {
+    console.log(`${i+1}. ${x[i]}`);
 }
+*/
+
+/*
+let i = 0;
+for (const e of x) {
+    console.log(`${i+1}. ${e}`);
+    i++;
+}
+*/
+
+x.forEach((e, i) => {
+    console.log(`${i+1}. ${e}`);
+});
+
