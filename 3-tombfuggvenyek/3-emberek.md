@@ -61,10 +61,10 @@ F5: 34.67
 F6: [ 'Dani', 'Béla', 'Gábor', 'János', 'Tibor' ]
 F7: József
 F8: { name: 'Béla', age: 62 }
-F8: [
+F9: [
   { name: 'Anikó', age: 24 },
   { name: 'József', age: 24 },
   { name: 'Réka', age: 24 }
 ]
-F9: [ 'Dani', 'Kata', 'Laci', 'Béla', 'Anikó', 'Réka' ]
+F10: [ 'Dani', 'Kata', 'Laci', 'Béla', 'Anikó', 'Réka' ]
 ```
