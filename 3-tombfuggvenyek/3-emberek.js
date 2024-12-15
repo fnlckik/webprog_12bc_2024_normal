@@ -39,13 +39,23 @@ function compare(p1, p2) {
 console.log("F4:", people.toSorted(compare));
 
 // F5
-console.log("F5:", );
+const atlag = people.reduce((s, p) => s + p.age, 0) / people.length;
+console.log("F5:", (atlag).toFixed(2));
 
 // F6
-console.log("F7:", );
+console.log("F6:", people.filter(p => p.age > atlag).map(p => p.name));
 
 // F7
-console.log("F7:", );
+console.log("F7:", people.findLast(p => p.name[0] === "J").name);
 
 // F8
-console.log("F8:", );
+console.log("F8:", people.reduce((m, p) => p.age > m.age ? p : m, people[0]));
+
+// F9
+console.log("F9:", people.filter((p1, i) => people.some((p2, j) => i !== j && p1.age === p2.age)));
+
+// F10
+function hasA(name) {
+    return Array.from(name).some(c => c.toUpperCase() === "A");
+}
+console.log("F10:", people.filter(p => hasA(p.name)).map(p => p.name));
