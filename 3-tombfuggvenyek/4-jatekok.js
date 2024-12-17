@@ -21,6 +21,45 @@ const games = [
     { title: "Tom Clancy's Ghost Recon Breakpoint", price: 19.99, multiplayer: true }
 ];
 
+// F1
+console.log("F1:", games.filter(g => 50 <= g.price && g.price <= 70));
+
+// F2
+console.log("F2:", games.filter(g => g.title.split(" ").length > 2).length);
+
+// F3
+console.log("F3:", games.every(g => g.price <= 60));
+
+// F4
+console.log("F4:", games.reduce((m, g) => g.price > m.price ? g : m));
+
+// Alternatív megoldás: rendezés
+console.log("F4:", games.toSorted((g1, g2) => g1.price > g2.price ? -1 : g1.price < g2.price ? 1 : 0)[0]);
+
+// F5
+console.log("F5:", games.find(g => g.price === 0.0 && g.multiplayer).title);
+
+// F6
+const fcPrice = games.find(g => g.title === "Far Cry 6").price;
+console.log("F6:", games.find(g => !g.multiplayer && g.price > fcPrice));
+
+// F7
+function cf(g1, g2) {
+    if (g1.title.length < g2.title.length) {
+        return -1;
+    } else if (g1.title.length > g2.title.length) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+console.log("F7:", games.toSorted(cf).map(g => g.title));
+
+// F8
+const sum = games.filter(g => g.price > 0).reduce((s, g) => s + g.price, 0);
+const count = games.filter(g => g.price > 0).length;
+console.log("F8:", (sum / count).toFixed(0) + "€");
+
 // F9
 function compare(g1, g2) {
     if (g1.multiplayer) {
@@ -33,3 +72,11 @@ function compare(g1, g2) {
 }
 console.log("F9:", games.toSorted(compare).map(g => ({title: g.title, price: g.price})));
 
+// Alternatív megoldás: szétválogatás + egyesítés
+const multis = games.filter(g => g.multiplayer);
+const nomultis = games.filter(g => !g.multiplayer);
+const multiOrder = [...multis, ...nomultis];
+console.log("F9:", multiOrder.map(g => ({"title": g.title, "price": g.price})));
+
+// F10
+console.log("F10:", games.map((g, i) => ({"title": g.title, "multibefore": games.filter((g2, j) => g2.multiplayer && j < i).length})));
