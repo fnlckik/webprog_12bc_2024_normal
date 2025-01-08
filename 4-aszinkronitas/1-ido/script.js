@@ -9,7 +9,7 @@ button.addEventListener("click", increase);
 
 // Hány ms (ezredmásodperc) telt el 1970-01-01 óta?
 const timestamp = Date.now(); // number, ~ statikus metódus
-const today = new Date(); // object, ~ példányosítás (kb. Date osztály)
+let today = new Date(); // object, ~ példányosítás (kb. Date osztály)
 const ww2 = new Date(1939, 8, 1); // hónap: 0-tól 11-ig
 const christmas = new Date("2024-12-24");
 const UNIX = new Date(0);
@@ -53,3 +53,48 @@ function sleep(ms) {
 }
 
 // Aszinkron végrehajtás!
+// Párhuzamos több folyamat is fut a háttérben!
+
+// setTimeout(console.log, 2000, "alma")
+
+// setTimeout(() => {
+//     console.log("Letelt az idő!");
+// }, 3000);
+// console.log("Alma");
+
+// sleep(3000);
+// console.log("Letelt az idő!");
+// console.log("Alma");
+
+// setTimeout(() => {
+//     console.log("Alma");
+// }, 500);
+
+// setTimeout(() => {
+//     console.log("Barack");
+// }, 3000);
+
+// setTimeout(() => {
+//     console.log("Körte");
+// }, 500);
+
+// setTimeout(() => {
+//     console.log("Cseresznye");
+// }, 0);
+
+// console.log("Dinnye");
+
+// setTimeout + rekurzió
+// setTimeout: adott idő múlva hívja meg a megadott függvényt
+// function updateTime() {
+//     today = new Date();
+//     timeSpan.innerText = today.toLocaleTimeString();
+//     setTimeout(updateTime, 1000);
+// }
+// updateTime();
+
+// setInterval: adott időközönként meghívja a megadott függvényt
+setInterval(() => {
+    today = new Date();
+    timeSpan.innerText = today.toLocaleTimeString();
+}, 1000);
