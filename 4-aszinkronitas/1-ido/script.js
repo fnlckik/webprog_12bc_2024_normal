@@ -25,4 +25,31 @@ const minute = today.getMinutes();
 const second = today.getSeconds();
 
 const dateSpan = document.querySelector("#datum");
-dateSpan.innerText = `${year}-${month}-${day}`;
+// dateSpan.innerText = `${year}. ${month < 10 ? "0" + month : month}. ${day < 10 ? "0" + day : day}.`; // 2025. 01. 08.
+// dateSpan.innerText = `${year}. ${month.toString().padStart(2, "0")}. ${day.toString().padStart(2, "0")}.`; // 2025. 01. 08.
+dateSpan.innerText = today.toLocaleDateString(); // 2025. 01. 08.
+
+const timeSpan = document.querySelector("#ido");
+// timeSpan.innerText = `${hour}:${minute}:${second}`;
+timeSpan.innerText = today.toLocaleTimeString();
+
+// -----------------------------------------------------
+
+// Szinkron végrehajtás!
+function print() {
+    for (let i = 0; i < 7; i++) {
+        console.log(i);
+        sleep(1000);
+    }
+}
+
+function sleep(ms) {
+    const start = Date.now();
+    let current = Date.now();
+    while (current - start < ms) {
+        current = Date.now();
+    }
+    // console.log("Várakozás vége!");
+}
+
+// Aszinkron végrehajtás!
