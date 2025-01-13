@@ -27,7 +27,17 @@
 #loading div {
     background-color: lightgreen;
     width: 0;
+    /* animation: toltes 5s linear; */
 }
+
+/* @keyframes toltes {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+} */
 
 #wrapper {
     border: 1px solid black;
