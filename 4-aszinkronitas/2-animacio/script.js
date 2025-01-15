@@ -23,6 +23,8 @@ loading.style.width = "0%";
 function updateLoading() {
     let width = parseInt(loading.style.width); // "12%" => 12
     width += randint(0, 5); // 12 => 14
+    // if (width > 100) width = 100;
+    width = Math.min(width, 100);
     loading.style.width = width + "%"; // "14%"
     if (width < 100) {
         setTimeout(updateLoading, 50);
