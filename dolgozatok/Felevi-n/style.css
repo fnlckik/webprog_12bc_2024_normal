@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(123, 104, 238, 0.2);
+    padding: 0.25em;
+}
+
+h1, p {
+    font-family: cursive;
+}
+
+ol {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    list-style-position: inside;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+}
+
+li {
+    cursor: default;
+    border: 1px solid black;
+    padding: 0.5em;
+    margin: 0.5em;
+    background-color: rgba(0, 200, 200, 0.2);
+}
+
+table, tr, td {
+    padding: 0.25em;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    margin: auto;
+    background-color: white;
+}
+
+td {
+    height: 4rem;
+    width: 5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+.chosen {
+    animation: chosen-one 0.5s forwards;
+}
+
+@keyframes chosen-one {
+    0% {
+        font-size: 0;
+    }
+    100% {
+        background-color: rgba(255, 255, 0, 0.1);
+    }
+}
+
+button {
+    padding: 0.5em;
+}
+
+div#menu {
+    margin: 1em;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+#icon {
+    cursor: pointer;
+}
+
+#icon:hover::after {
+    content: "⬅";
+    color: green;
+    display: inline;
+    margin-left: 0.25em;
+    transition: all 1s;
+}
+
+.display {
+    display: none;
+}
+
