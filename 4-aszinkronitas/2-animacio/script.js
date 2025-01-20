@@ -44,14 +44,44 @@ const id = setInterval(() => {
 }, 50);
 
 // F3
+// 5000 => 05:00
+// 4500 => 04:50
+function getTime(remaining) {
+    // ???
+}
+
+// if (remaining < 0) remaining = 0;
+// const remaining = eltelt > 5000 ? 0 : 5000 - eltelt;
+// const remaining = Math.max(5000 - eltelt, 0);
+const timeSpan = document.querySelector("#time");
 const start = Date.now();
 function updateTime() {
     const eltelt = Date.now() - start; // Mennyi idő telt el az oldal betöltése óta?
-    console.log(eltelt);
-    if (eltelt < 5000) {
+    let remaining = 5000 - eltelt;
+    if (remaining < 0) remaining = 0;
+    timeSpan.innerText = getTime(remaining);
+    if (remaining > 0 && button.disabled === false) {
         setTimeout(updateTime, 1);
+    } else {
+        handleCheck();
     }
 }
+
+function handleCheck() {
+    button.removeEventListener("click", handleCheck);
+    button.disabled = true;
+    const input = document.querySelector("input");
+    input.disabled = true;
+    const resultSpan = document.querySelector("#result");
+    if (input.value === "cat") {
+        resultSpan.innerText = "😺";
+    } else {
+        resultSpan.innerText = "😿";
+    }
+}
+const button = document.querySelector("button");
+button.addEventListener("click", handleCheck);
+
 updateTime();
 
 // Vigyázat! A setTimeout() nem pontos ezredmásodpercre!
