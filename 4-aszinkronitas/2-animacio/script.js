@@ -46,23 +46,18 @@ const id = setInterval(() => {
 // F3
 const start = Date.now();
 function updateTime() {
-    const elapsed = Date.now() - start;
-    console.log(elapsed);
-    if (elapsed < 5000) {
+    const eltelt = Date.now() - start; // Mennyi idő telt el az oldal betöltése óta?
+    console.log(eltelt);
+    if (eltelt < 5000) {
         setTimeout(updateTime, 1);
     }
 }
 updateTime();
 
 // Vigyázat! A setTimeout() nem pontos ezredmásodpercre!
-let db = 0;
 function precision() {
-    const start = Date.now();
-    db++;
-    if (db < 100) {
-        setTimeout(() => {
-            precision();
-            console.log(Date.now() - start);
-        }, 1);
-    }
+    const kezdes = Date.now();
+    setTimeout(() => {
+        console.log(Date.now() - kezdes);
+    }, 1);
 }
