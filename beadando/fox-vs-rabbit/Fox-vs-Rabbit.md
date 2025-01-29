@@ -10,7 +10,7 @@ Készíts egy játékot, amelyben egy róka karaktert irányítunk, és az a cé
 
 ## Játék kezdete
 
-1. A játék egy **gombra kattintva induljon** el. Egy játék végét követően új játék is indítható ugyanazzal a gombbal, de játék közben nem használható. **`1p`**
+1. A játék egy **gombra kattintva induljon** el. A játék végét követően új játék is legyen indítható ugyanazzal a gombbal, de miközben játszunk a gomb ne legyen használható. **`1p`**
 
 2. A **játéktér** egy **táblázat**, amelynek `n` sora és `m` oszlopa van. Ezeket rögzítheted konstansként.
    
@@ -31,7 +31,7 @@ A róka akkor nyer, ha sikerül 3-szor elkapnia a nyulat. Mindegyik alkalommal 7
 
     Az új hely teljesen véletlenszerű lehet a táblázaton belül, akár még oda is ugorhat, ahol éppen a róka van.
 
-5. Jelenítsd meg a felhasználó számára a weboldalon az idő **pontos** múlását másodpercben! Az eltelt időt a UNIX timestamp segítségével számítsd ki! **`3p`**
+5. Jelenítsd meg a felhasználó számára a weboldalon az idő **pontos** múlását másodpercben! Az eltelt időt a UNIX timestamp segítségével számítsd ki a szint kezdetétől számolva! **`3p`**
    
     Ha eltelik 7 másodperc, akkor érjen véget a szint! A szint végét követően a rókát ne tudjuk irányítani, és tűnjön is el a játéktérről!
 
@@ -41,7 +41,7 @@ A róka akkor nyer, ha sikerül 3-szor elkapnia a nyulat. Mindegyik alkalommal 7
 
     *Érdemes a `level` függvénynek paraméterként átadni az aktuális szint sorszámát meghíváskor.*
 
-7. Az 1. szint teljesítése esetén következzen a 2. szint, majd a 3. szint. Ha bármelyik szinten nem sikerül a rókának elkapnia a nyulat, akkor véget ér a játék! Akár győztünk, akár veszítettük, a start gomb segítségével mindenképpen indíthassunk új játékot! **`2p`**
+7. Az 1. szint teljesítése esetén következzen a 2. szint, majd a 3. szint. Ha bármelyik szinten nem sikerül a rókának elkapnia a nyulat, akkor véget ér a játék! Akár győztünk, akár veszítettük, a start gomb segítségével mindenképpen indíthassunk új játékot! **`3p`**
 
 ## Megjelenítés
 
@@ -49,3 +49,4 @@ A róka akkor nyer, ha sikerül 3-szor elkapnia a nyulat. Mindegyik alkalommal 7
 
 9. Törekedj a **szép megjelenítés**re, az oldal kinézete ne legyen hanyag! **`2p`**
 
+**Összesen: 20 pont**
