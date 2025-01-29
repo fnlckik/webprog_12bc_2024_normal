@@ -27,21 +27,21 @@ Készíts egy játékot, amelyben egy róka karaktert irányítunk, és az a cé
 
 A róka akkor nyer, ha sikerül 3-szor elkapnia a nyulat. Mindegyik alkalommal 7 másodperce van erre. *A szintek tehát nehézségben nem különböznek egymástól, csak 3-szor egymás után kell ugyanazt teljesítenie a játékosnak.*
 
-1. Készíts függvényt `level` néven, amely a játék egy szintjét szimulálja. A függvényen belül oldd meg, hogy a nyúl **1 másodpercenként új hely**re ugorjon! **`2p`**
+4. Készíts függvényt `level` néven, amely a játék egy szintjét szimulálja. A függvényen belül oldd meg, hogy a nyúl **1 másodpercenként új hely**re ugorjon! **`2p`**
 
     Az új hely teljesen véletlenszerű lehet a táblázaton belül, akár még oda is ugorhat, ahol éppen a róka van.
 
-2. Jelenítsd meg a felhasználó számára a weboldalon az idő **pontos** múlását másodpercben! Az eltelt időt a UNIX timestamp segítségével számítsd ki! **`3p`**
+5. Jelenítsd meg a felhasználó számára a weboldalon az idő **pontos** múlását másodpercben! Az eltelt időt a UNIX timestamp segítségével számítsd ki! **`3p`**
    
     Ha eltelik 7 másodperc, akkor érjen véget a szint! A szint végét követően a rókát ne tudjuk irányítani, és tűnjön is el a játéktérről!
 
-3. A `level` függvény visszatérési értéke egy `Promise` objektum legyen, amely addig van `pending` állapotban, amíg a róka üldözi a nyulat. Ha sikerül elkapnia 7 másodpercen belül, akkor beteljesül az ígéret (`fulfilled`), viszont ha lejár az idő, akkor elutasításra kerül (`rejected`). **`3p`**
+6. A `level` függvény visszatérési értéke egy `Promise` objektum legyen, amely addig van `pending` állapotban, amíg a róka üldözi a nyulat. Ha sikerül elkapnia 7 másodpercen belül, akkor beteljesül az ígéret (`fulfilled`), viszont ha lejár az idő, akkor elutasításra kerül (`rejected`). **`3p`**
 
     A `Promise` **elfogadó állapot**ban az **időt adja** vissza (amennyi alatt a szintet teljesítettük), **elutasítás esetén** pedig a **szintet** (amelyiket elbuktuk).
 
     *Érdemes a `level` függvénynek paraméterként átadni az aktuális szint sorszámát meghíváskor.*
 
-4. Az 1. szint teljesítése esetén következzen a 2. szint, majd a 3. szint. Ha bármelyik szinten nem sikerül a rókának elkapnia a nyulat, akkor véget ér a játék! Akár győztünk, akár veszítettük, a start gomb segítségével mindenképpen indíthassunk új játékot! **`2p`**
+7. Az 1. szint teljesítése esetén következzen a 2. szint, majd a 3. szint. Ha bármelyik szinten nem sikerül a rókának elkapnia a nyulat, akkor véget ér a játék! Akár győztünk, akár veszítettük, a start gomb segítségével mindenképpen indíthassunk új játékot! **`2p`**
 
 ## Megjelenítés
 
