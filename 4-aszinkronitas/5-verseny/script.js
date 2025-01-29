@@ -1,29 +1,37 @@
-function round(callback) {
-    setTimeout(() => {
-        const p = Math.floor(Math.random() * 301); // 0..300
-        callback(p);
-    }, 1000);
+function round(n) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const p = Math.floor(Math.random() * 301); // 0..300
+            if (p >= 20 || n === 3) {
+                resolve(p);
+            } else {
+                reject(p);
+            }
+        }, 1000);
+    })
 }
 
 // Továbbjutás 200 ponttól!
 function competition() {
-    round(point => {
-        console.log(point);
-        if (point >= 200) {
-            round(point => {
-                console.log(point);
-                if (point >= 200) {
-                    round(point => {
-                        console.log(point);
-                        console.log("Vége a versenynek!");
-                    })
-                } else {
-                    console.log("Kiestél!");
-                }
-            })
-        } else {
-            console.log("Kiestél!");
-        }
+    round(1)
+    .then(p => {
+        console.log(p);
+        return round(2);
+    })
+    .then(p => {
+        console.log(p);
+        return round(3);
+    })
+    .then(p => {
+        console.log(p);
+        console.log("Verseny vége!");
+    })
+    .catch(p => {
+        console.log(p);
+        console.log("Kiestél!");
+    })
+    .finally(() => {
+        console.log("Köszönöm a részvételt!");
     });
 }
 competition();
