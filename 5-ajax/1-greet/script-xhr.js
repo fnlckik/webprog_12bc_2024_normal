@@ -38,9 +38,12 @@ function handleClick(e) {
     e.preventDefault();
     const input = document.querySelector("form input");
     
-    fetch(`http://localhost/greet-ajax/?username=${input.value}`)
-    .then(response => {
-        console.log(response);
-    });
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `http://localhost/greet-ajax/?username=${input.value}`);
+    xhr.onload = () => {
+        const data = JSON.parse(xhr.response); // string => object
+        show(data);
+    };
+    xhr.send();
 }
 button.addEventListener("click", handleClick);
