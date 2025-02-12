@@ -40,12 +40,12 @@ function show(data) {
 
 // JSON: JavaScript Object Notation
 const button = document.querySelector("form button");
-async function handleClick(e) {
+function handleClick(e) {
     e.preventDefault();
     const input = document.querySelector("form input");
     
-    const response = await fetch(`http://localhost/greet-ajax/?username=${input.value}`);
-    const data = await response.json();
-    show(data);
+    fetch(`http://localhost/greet-ajax/?username=${input.value}`)
+    .then(response => response.json())
+    .then(data => show(data));
 }
 button.addEventListener("click", handleClick);
