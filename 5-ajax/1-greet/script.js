@@ -27,20 +27,25 @@ setInterval(() => {
     table.rows[i].cells[j].style.backgroundColor = `rgba(${randint(0, 255)}, ${randint(0, 255)}, ${randint(0, 255)}, 0.5)`;
 }, 1000);
 
+// {name: 'Farkas Norbert', friends: 314}
 function show(data) {
-    // ???
+    document.querySelector("form").classList.add("hidden");
+    const div = document.querySelector("#adatok");
+    div.classList.remove("hidden");
+    div.innerHTML = `
+        <p>Név: ${data.name}</p>
+        <p>Ismerősök száma: ${data.friends}</p>
+        `;
 }
 
 // JSON: JavaScript Object Notation
-// XMLHttpRequest (xhr)
 const button = document.querySelector("form button");
 function handleClick(e) {
     e.preventDefault();
     const input = document.querySelector("form input");
     
     fetch(`http://localhost/greet-ajax/?username=${input.value}`)
-    .then(response => {
-        console.log(response);
-    });
+    .then(response => response.json())
+    .then(data => show(data));
 }
 button.addEventListener("click", handleClick);
