@@ -45,7 +45,18 @@ function handleClick(e) {
     const input = document.querySelector("form input");
     
     fetch(`http://localhost/greet-ajax/?username=${input.value}`)
-    .then(response => response.json())
-    .then(data => show(data));
+    .then(response => {
+        // response.status !== 200
+        if (!response.ok) {
+            throw new Error("Nincs ilyen felhasználó!");
+        }
+        return response.json();
+    })
+    .then(data => show(data))
+    .catch(error => console.log(error.message));
+    // Mi lehet hiba?
+    // 1. Nem fut a szerver
+    // 2. Nem jó típusú adatot ad a szerver
+    // 3. Nincs ilyen felhasználó...
 }
 button.addEventListener("click", handleClick);
