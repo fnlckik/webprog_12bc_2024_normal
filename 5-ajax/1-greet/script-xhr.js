@@ -27,8 +27,15 @@ setInterval(() => {
     table.rows[i].cells[j].style.backgroundColor = `rgba(${randint(0, 255)}, ${randint(0, 255)}, ${randint(0, 255)}, 0.5)`;
 }, 1000);
 
+// {name: 'Farkas Norbert', friends: 314}
 function show(data) {
-    // ???
+    document.querySelector("form").classList.add("hidden");
+    const div = document.querySelector("#adatok");
+    div.classList.remove("hidden");
+    div.innerHTML = `
+        <p>Név: ${data.name}</p>
+        <p>Ismerősök száma: ${data.friends}</p>
+        `;
 }
 
 // JSON: JavaScript Object Notation
