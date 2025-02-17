@@ -44,8 +44,33 @@ async function handleClick(e) {
     e.preventDefault();
     const input = document.querySelector("form input");
     
-    const response = await fetch(`http://localhost/greet-ajax/?username=${input.value}`);
-    const data = await response.json();
-    show(data);
+    try {
+        const response = await fetch(`http://localhost/greet-ajax/?username=${input.value}`);
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error("Nincs ilyen felhasználó!");
+        }
+        show(data);
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
 }
 button.addEventListener("click", handleClick);
+
+/*
+try {
+    const response = await fetch(`http://localhost/greet-ajax/?username=${input.value}`);
+    const data = await response.json();
+    if (response.status === 200) {
+        show(data);
+    } else {
+        throw new Error("Nincs ilyen felhasználó!");
+    }
+} catch (error) {
+    if (error.message === "Failed to fetch") {
+        console.log("Nem jó a szerver!");
+    } else {
+        console.log(error.name + " " + error.message);
+    }
+}
+*/
