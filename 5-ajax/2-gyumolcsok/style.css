@@ -1,0 +1,12 @@
+img {
+    width: 100px;
+}
+
+li {
+    margin: 1em;
+    width: fit-content;
+}
+
+ul li div {
+    border: 2px solid black;
+}

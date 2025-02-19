@@ -1,5 +1,6 @@
 // https://hur.webmania.cc/products.json
 
+/*
 function createCard(product) {
     const div = document.createElement("div"); // Kártya!
     
@@ -17,6 +18,17 @@ function createCard(product) {
 
     return div;
 }
+*/
+
+function createCard(product) {
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <img src=${product.picture}>
+        <p>Név: ${product.name}</p>
+        <p>Ár: ${product.price} Ft</p>
+    `;
+    return div;
+}
 
 function show(data) {
     const ul = document.querySelector("ul");
@@ -29,12 +41,21 @@ function show(data) {
     });
 }
 
-let data;
-const button = document.querySelector("button");
-async function getFruits() {
+async function getFruitsAsync() {
     const response = await fetch("https://hur.webmania.cc/products.json");
-    data = await response.json();
+    const data = await response.json();
     console.log(data);
     show(data);
 }
-button.addEventListener("click", getFruits);
+
+function getFruitsXHR() {
+    // ???
+}
+
+// Promise-os megoldás then-ekkel!
+function getFruitsFetch() {
+    // ???
+}
+
+const button = document.querySelector("button");
+button.addEventListener("click", getFruitsAsync);
