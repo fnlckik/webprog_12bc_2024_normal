@@ -44,18 +44,26 @@ function show(data) {
 async function getFruitsAsync() {
     const response = await fetch("https://hur.webmania.cc/products.json");
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     show(data);
 }
 
 function getFruitsXHR() {
-    // ???
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://hur.webmania.cc/products.json");
+    xhr.onload = () => {
+        const data = JSON.parse(xhr.response);
+        show(data);
+    }
+    xhr.send();
 }
 
 // Promise-os megoldás then-ekkel!
 function getFruitsFetch() {
-    // ???
+    fetch("https://hur.webmania.cc/products.json")
+    .then(response => response.json())
+    .then(data => show(data));
 }
 
 const button = document.querySelector("button");
-button.addEventListener("click", getFruitsAsync);
+button.addEventListener("click", getFruitsXHR);

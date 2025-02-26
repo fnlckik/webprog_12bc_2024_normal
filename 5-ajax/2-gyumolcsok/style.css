@@ -1,5 +1,5 @@
 img {
-    width: 100px;
+    width: 100%;
 }
 
 li {
@@ -7,6 +7,23 @@ li {
     width: fit-content;
 }
 
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 ul li div {
     border: 2px solid black;
+    height: 200px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1em;
+}
+
+ul li div img {
+    border-radius: 1em 1em 0 0;
 }
