@@ -44,10 +44,14 @@ buttonCurrent.addEventListener("click", handleCurrent);
 
 // -------------------------------------
 
-const buttonForecast = document.querySelector("#aktualis");
-function handleForecast() {
+"http://api.weatherapi.com/v1/forecast.json?q=Cegled&key=c75e43014d424a7a92a231046251802&days=3"
+
+const buttonForecast = document.querySelector("#holnapi");
+async function handleForecast() {
     const input = document.querySelector("input");
     const city = input.value;
-    fetch(`${URL}/foreacast.json?q=${city}&key=${APIKEY}`);
+    const response = await fetch(`${URL}/forecast.json?q=${city}&key=${APIKEY}&days=3`);
+    const data = await response.json();
+    console.log(data);
 }
 buttonForecast.addEventListener("click", handleForecast);
