@@ -46,12 +46,21 @@ buttonCurrent.addEventListener("click", handleCurrent);
 
 "http://api.weatherapi.com/v1/forecast.json?q=Cegled&key=c75e43014d424a7a92a231046251802&days=3"
 
+function showForecast(data) {
+    const div = document.querySelector("div");
+    div.innerHTML = `
+        <p>Város: ${data.location.name}</p>
+        <p>Ország: ${data.location.country}</p>
+        <p>Hőmérséklet (átlag): ${data.forecast.forecastday[1].day.avgtemp_c} °C</p>
+    `;
+}
+
 const buttonForecast = document.querySelector("#holnapi");
 async function handleForecast() {
     const input = document.querySelector("input");
     const city = input.value;
     const response = await fetch(`${URL}/forecast.json?q=${city}&key=${APIKEY}&days=3`);
     const data = await response.json();
-    console.log(data);
+    showForecast(data);
 }
 buttonForecast.addEventListener("click", handleForecast);
