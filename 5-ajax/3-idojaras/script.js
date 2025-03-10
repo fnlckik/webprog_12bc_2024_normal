@@ -52,6 +52,11 @@ function showForecast(data) {
         <p>Város: ${data.location.name}</p>
         <p>Ország: ${data.location.country}</p>
         <p>Hőmérséklet (átlag): ${data.forecast.forecastday[1].day.avgtemp_c} °C</p>
+        <p>Páratartalom (átlag): ${data.forecast.forecastday[1].day.avghumidity}%</p>
+        <p id="egbolt">
+            <span>Égbolt: ${data.forecast.forecastday[1].day.condition.text}</span>
+            <img src="https:${data.forecast.forecastday[1].day.condition.icon}">
+        </p>
     `;
 }
 
@@ -59,8 +64,19 @@ const buttonForecast = document.querySelector("#holnapi");
 async function handleForecast() {
     const input = document.querySelector("input");
     const city = input.value;
-    const response = await fetch(`${URL}/forecast.json?q=${city}&key=${APIKEY}&days=3`);
-    const data = await response.json();
-    showForecast(data);
+    try {
+        const response = await fetch(`${URL}/forecast.json?q=${city}&key=${APIKEY}&days=3&lang=hu`);
+        const data = await response.json();
+        // response.status === 400
+        if (!response.ok) {
+            // throw new Error(JSON.stringify(data));
+            // console.log(data.error.message);
+            throw new Error(data.error.message);
+        }
+        showForecast(data);
+    } catch (error) {
+        // console.log(error.message);
+        alert(error.message);
+    }
 }
 buttonForecast.addEventListener("click", handleForecast);
