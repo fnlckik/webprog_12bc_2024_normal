@@ -7,11 +7,41 @@ function showData(data) {
         <th>Osztály</th>
         <th>Tömeg</th>
     </tr>`;
+    // element = {date: '2025-03-12', class: '11.A', weight: 73}
+    for (const element of data) {
+        // const tr = document.createElement("tr");
+        // for (const key in element) {
+        //     const td = document.createElement("td");
+        //     td.innerText = element[key];
+        //     tr.appendChild(td);
+        // }
+        // table.appendChild(tr);
+        table.innerHTML += `<tr>
+            <td>${element.date}</td>
+            <td>${element.class}</td>
+            <td>${element.weight}</td>
+        </tr>`;
+        // const row = document.createElement("tr");
+        // const tdDate = document.createElement("td");
+        // const tdClass = document.createElement("td");
+        // const tdWeight = document.createElement("td");
+        // tdDate.innerText = element.date;
+        // tdClass.innerText = element.class;
+        // tdWeight.innerText = element.weight;
+        // row.appendChild(tdDate);
+        // row.appendChild(tdClass);
+        // row.appendChild(tdWeight);
+        // table.appendChild(row);
+    }
 }
 
 const keresButton = document.querySelector("#keres");
-function getData() {
-
+async function getData() {
+    const osztaly = document.querySelector("select").value;
+    const response = await fetch(`http://localhost/papir/?osztaly=${osztaly}`);
+    const data = await response.json();
+    // console.log(data);
+    showData(data);
 }
 keresButton.addEventListener("click", getData);
 
