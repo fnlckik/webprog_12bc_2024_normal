@@ -1,28 +1,28 @@
-# Memory-Game
+# Memory-Game 🧠
 
-Készítsetek egy memória játékot az alábbi leírás szerint!
+Készítsetek egy egyszerű memória játékot az alábbi leírás alapján!
 
-A memória játék lényege, hogy képeket tartalmazó kártyákat kell párba rendezni a játékosnak. A kártyák kezdetben lefordított állapotban vannak, és egyszerre egy párt nézhet meg a felhasználó.
+A játék lényege, hogy képeket tartalmazó kártyákat kell párba rendezni a játékosnak. A kártyák kezdetben le vannak fordítva, és a játékos egyszerre csak két kártyát nézhet meg.
 
-## Funkcionalitás (frontend - JS)
+## Funkcionalitás (frontend - JS) 🎮
 
-1. A játék indításakor képeket tartalmazó kártyák jelennek meg, melyek tartalma kezdetben csak 3-5 másodpercig látható. Minden kártyának pontosan egy párja van. A kártyák sorrendje véletlenszerű. - **3p**
+1. A játék elején jelenjenek meg képeket tartalmazó kártyák, melyek tartalma rövid ideig (3-5 másodpercig) látható. A kártyák sorrendje legyen véletlenszerű, és mindegyik kártyának pontosan egy párja legyen. - **3p**
 
-2. Egy kártyára kattintáskor felfedjük azt (megmutatjuk a játékosnak a hozzá tartozó képet). - **1p**
+2. Ha a játékos rákattint egy kártyára, az forduljon fel, és mutassa a hozzá tartozó képet. - **1p**
 
 3. Ha kiválasztott a játékos egy kártyát, tudjon hozzá párt is választani! Fedjük fel a második kiválasztott kártyát is, és ellenőrizzük, hogy talált-e párt a játékos. Ha egyeznek a képek, tüntessük el a kártyákat. Más esetben csak fordítsuk vissza őket. - **3p**
 
 4. Figyeljük a játék során az időt, és számoljuk a hibákat is. (Hibának tekintjük ha rossz párt választ a játékos.) - **2p**
 
-5. A játékos tudjon kezdetben szintet választani. Nehezebb szinten több kártyával dolgozzunk. - **2p**
+5. A játékos tudjon kezdetben szintet választani. Nehezebb szinteken legyen több kártya. Legalább 3 fajta nehézségi szint legyen. - **2p**
 
 6. Kapjon a játékos egy egyszer használható képességet is. Aktiválásakor egy véletlenszerűen választott kártyapár felfedésre kerül. - **2p**
 
-7. Szintén egyszer használható képessége a játékosnak, hogy rövid időre (pl.: 3-5 másodperc) felfedjük a teljes játékteret. - **2p**
+7. Szintén egyszer használható képessége a játékosnak, hogy rövid időre (3-5 másodperc) felfedjük a teljes játékteret. - **2p**
 
-8. A kártyák kiválasztását delegálás segítségével oldd meg! (Ne tartozzon minden kártyához külön eseménykezelő, hanem a szülő elemre kattintást kezeld le.) - **1p**
+8. A kártyák kattintását delegálással oldd meg: ne írj mindegyik kártyához külön eseménykezelőt, hanem a szülő elem kezelje a kattintást! - **1p**
 
-9. A játékot végig tudjuk játszani, nem tartalmaz egyéb hibákat. - **2p**
+9. A játék legyen végigjátszható, ne tartalmazzon hibákat vagy elakadási lehetőséget. - **2p**
 
 10. Törekedj a kód tisztaságára! - **2p**
     - beszédes változónevek
@@ -30,7 +30,7 @@ A memória játék lényege, hogy képeket tartalmazó kártyákat kell párba r
 
 Összesen: **20 pont**
 
-## Adattárolás és kinézet (AJAX, CSS)
+## Adattárolás és kinézet (AJAX, CSS) 🧾
 
 1. A felhasználó még a játék kezdete előtt adja meg az email címét és az életkorát. A játék végét követően tárold el `localstorage`-ban a játék statisztikáit! - **2 pont**
     - Ki játszott? (azonosító: email cím)
