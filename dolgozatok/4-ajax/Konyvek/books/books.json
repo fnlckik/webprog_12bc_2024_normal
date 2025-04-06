@@ -1,0 +1,95 @@
+[
+    {
+        "author": "J. K. Rowling",
+        "title": "Harry Potter és a Félvér Herceg",
+        "lang": [
+            "hu",
+            "en",
+            "de"
+        ],
+        "price": 2280,
+        "store": "https://www.libri.hu/konyv/jk_rowling.harry-potter-es-a-felver-herceg.html"
+    },
+    {
+        "author": "Móricz Zsigmond",
+        "title": "Légy jó mindhalálig",
+        "lang": [
+            "hu",
+            "ro"
+        ],
+        "price": 3800,
+        "store": "https://www.libri.hu/konyv/moricz_zsigmond.legy-jo-mindhalalig--23.html"
+    },
+    {
+        "author": "J. R. R. Tolkien",
+        "title": "The Hobbit",
+        "lang": [
+            "de",
+            "es",
+            "en",
+            "ru"
+        ],
+        "price": 4274,
+        "store": "https://www.libri.hu/idegen_nyelvu/konyv/The-Hobbit-99.html"
+    },
+    {
+        "author": "Stefan Petrucha",
+        "title": "Deadpool - Praclik",
+        "lang": [
+            "en",
+            "de",
+            "hu"
+        ],
+        "price": 4752,
+        "store": "https://www.libri.hu/konyv/Marvel-Deadpool-Praclik-1.html"
+    },
+    {
+        "author": "Raymond Smullyan",
+        "title": "Alice Rejtvényországban",
+        "lang": [
+            "hu",
+            "it",
+            "cz"
+        ],
+        "price": 2625,
+        "store": "https://www.libri.hu/konyv/raymond_smullyan.alice-rejtvenyorszagban-3.html"
+    },
+    {
+        "author": "Kertész Imre",
+        "title": "Sorstalanság",
+        "lang": [
+            "en",
+            "de",
+            "it",
+            "fr",
+            "hu",
+            "ro",
+            "pl"
+        ],
+        "price": 1890,
+        "store": "https://www.libri.hu/konyv/kertesz_imre.sorstalansag--39.html"
+    },
+    {
+        "author": "Rick Riordan",
+        "title": "Percy Jackson és az olimposziak 1.",
+        "lang": [
+            "en",
+            "de",
+            "fr",
+            "hu"
+        ],
+        "price": 4274,
+        "store": "https://www.libri.hu/konyv/rick_riordan.percy-jackson-es-az-olimposziak-1-a-villamtolvaj-puha-kotes.html"
+    },
+    {
+        "author": "Charles Dickens",
+        "title": "A Christmas Carol",
+        "lang": [
+            "en",
+            "de",
+            "fr"
+        ],
+        "price": 4023,
+        "store": "https://www.libri.hu/idegen_nyelvu/konyv/charles_dickens.a-christmas-carol--2.html"
+    }
+]

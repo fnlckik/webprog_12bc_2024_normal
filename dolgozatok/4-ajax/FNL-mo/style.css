@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0 3em;
+}
+
+h1 {
+    margin: 1em 0;
+}
+
+button {
+    padding: 0.25em;
+    cursor: pointer;
+}
+
+hr {
+    margin: 2em auto;
+    border: 3px solid black;
+    border-radius: 200px;
+}
+
+
+
+/* Könyv adatai */
+
+.book {
+    border: 1px solid black;
+    margin: 1em auto;
+    padding: 1em;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.book h2 {
+    text-align: center;
+}
+
+.book a {
+    text-decoration: none;
+    color: black;
+}
+
+.book a:hover {
+    text-decoration: underline;
+    color: rgba(0, 0, 180, 0.9);
+}
+
+
+
+/* Összes könyv adata */
+
+ul {
+    list-style: none;
+    margin-top: 1em;
+}
+
+ul li {
+    border: 1px solid black;
+    padding: 0.25em;
+    height: 3em;
+    display: flex;
+    align-items: center;
+}
+
+#all {
+    max-width: 100%;
+    width: 250px;
+    height: 3em;
+    display: block;
+    margin: auto;
+}
+
+
+
+/* Adat rögzítése */
+
+input {
+    padding: 0.25em;
+}
+
+fieldset input[type="number"] {
+    width: 6em;
+}
+
+label {
+    font-weight: bold;
+}
+
+label input {
+    margin-left: 0.25em;
+}
+
+br {
+    content: "";
+    display: block;
+    margin: 1em 0;
+}
