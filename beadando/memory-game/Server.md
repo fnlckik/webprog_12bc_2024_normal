@@ -69,7 +69,7 @@ A `http://localhost/memory/create/` végpont `POST` kérést fogad. A kérés t�
   "email": "farkas.norbert@ckik.hu",
   "age": 28,
   "level": "nehéz",
-  "time": "241",
+  "time": 241,
   "mistakes": 37
 }
 ```
