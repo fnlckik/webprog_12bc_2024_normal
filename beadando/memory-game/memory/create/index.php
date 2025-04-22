@@ -30,7 +30,7 @@
 
     function check_data($data) {
         foreach (['email', 'age', 'level', 'time', 'mistakes'] as $key) {
-            if (!$data[$key]) {
+            if ($data[$key] === "") {
                 http_response_code(400);
                 echo json_encode(["error" => "Hiányzó adat(ok)!"], JSON_UNESCAPED_UNICODE);
                 exit();
